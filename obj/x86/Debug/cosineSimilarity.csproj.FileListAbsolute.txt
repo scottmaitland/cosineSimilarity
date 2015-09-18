@@ -1,0 +1,4 @@
+E:\Maitland\cosineSimilarity\cosineSimilarity\bin\Debug\cosineSimilarity.exe
+E:\Maitland\cosineSimilarity\cosineSimilarity\bin\Debug\cosineSimilarity.pdb
+E:\Maitland\cosineSimilarity\cosineSimilarity\obj\x86\Debug\cosineSimilarity.exe
+E:\Maitland\cosineSimilarity\cosineSimilarity\obj\x86\Debug\cosineSimilarity.pdb
