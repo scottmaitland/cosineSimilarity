@@ -162,13 +162,73 @@ namespace cosineSimilarity
             string item_row_i = Console.ReadLine();
             Console.WriteLine("Please enter the index of the second row you would like to compare.");
             string item_row_j = Console.ReadLine();
-
-            int item_row_i_int = Int32.Parse(item_row_i);
-            int item_row_j_int = Int32.Parse(item_row_j);
-
-            Console.WriteLine("You are comparing rows {0} and {1}.", item_row_i, item_row_j);
-
             
+            int row_i_int = Int32.Parse(item_row_i);
+            int row_j_int = Int32.Parse(item_row_j);
+
+
+            //get the start index of the first row
+            int beg_row_i = mdt_row_acc[row_i_int] - 1;
+            Console.WriteLine("The first i non zero value begins at index {0} in the val array", beg_row_i);
+            //get the start index of the second row
+            int beg_row_j = mdt_row_acc[row_j_int] - 1;
+            Console.WriteLine("The first j non zero value begins at index {0} in the val array", beg_row_j);
+
+
+            //get the nnz in first row
+            int nnz_i = mdt_row_acc[row_i_int + 1] - mdt_row_acc[row_i_int];
+            Console.WriteLine("The number of non-zero values on row i is {0}", nnz_i);
+
+            //get the nnz in the second row
+            int nnz_j = mdt_row_acc[row_j_int + 1] - mdt_row_acc[row_j_int];
+            Console.WriteLine("The number of non-zero values on row j is {0}", nnz_j);
+
+            //create a pointer variable for first row
+            int i_ptr = 0;
+            //create a pointer variable for second row
+            int j_ptr = 0;
+
+            double cosine = 0.00;
+            double length_i = 0;
+            double length_j = 0;
+            //while pointer variables < nnz (for both rows)
+            while (i_ptr < nnz_i && j_ptr < nnz_j)
+            {
+                //check column index of row one and row two and see if they are equal
+                if (mdt_col_ind[beg_row_i + i_ptr] == mdt_col_ind[beg_row_j + j_ptr])
+                {
+                    //if they are equal contribute to cosine
+                    //contribute to length of first and second row
+                    cosine = (mdt_values[beg_row_i + i_ptr] * mdt_values[beg_row_j + j_ptr]);
+                    length_i = (mdt_values[beg_row_i + i_ptr] * mdt_values[beg_row_i + i_ptr]);
+                    length_j = (mdt_values[beg_row_j + j_ptr] * mdt_values[beg_row_j + j_ptr]);
+                    Console.WriteLine("11111");
+                    i_ptr++;
+                    j_ptr++;
+                }
+                else
+                {
+                    //else if first row is farther than second row
+                    //contribute to length of second row
+                    //incriment second row
+                    //else *if second row is farther than first row
+                    //contribute to length of first row
+                    //incriment first row
+                    i_ptr++;
+                    j_ptr++;
+                }
+            }
+            //while pointer for row 1 is less than nnz
+                //contribute to length
+
+            //while pointer for row 2 is less than nnz
+                //contribute to length
+
+            //make sure length is > 0
+                //divide cosine by sqrt of product of lengths
+            //else cosine = 0
+
+            Console.ReadLine();
         }
 
         static void revertToMenu()
